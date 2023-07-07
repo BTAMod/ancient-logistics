@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "ancientlogistics",
+  "version": "${version}",
+
+  "name": "Ancient Logistics",
+  "description": "This mod aims to bring inventive new automations to Better than Adventure.",
+  "authors": [
+    "Youngs Ditch"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+        "youngsditch.ancientlogistics.AncientLogistics"
+    ]
+  },
+  "mixins": [
+      "ancientlogistics.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.13.3"
+  },
+  "suggests": {
+  }
+}
