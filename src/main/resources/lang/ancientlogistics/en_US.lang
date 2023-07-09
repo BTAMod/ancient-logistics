@@ -1,2 +1,9 @@
-item.ancientlogistics.sethgravy.name=Seth Gravy
-item.ancientlogistics.sethgravy.desc=Tastes weird.
+item.ancientlogistics.gear.name=Gear
+item.ancientlogistics.gear.desc=It's a gear.
+
+tile.ancientlogistics.gearbox.name=Gearbox
+tile.ancientlogistics.gearbox.desc=It's a gearbox.
+tile.ancientlogistics.geartrommel.name=Trommel Gearbox
+tile.ancientlogistics.geartrommel.desc=It's a trommel gearbox.
+tile.ancientlogistics.gearchest.name=Chest Sorter
+tile.ancientlogistics.gearchest.desc=It's a chest sorter.
