@@ -1,6 +1,6 @@
 # Ancient Logistics
 
-Ancient Logistics is a mod for [Better than Adventure 1.7.6.2_02](https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/3106066-better-than-adventure-for-beta-1-7-3-timely) that adds a variety of new items and blocks to the game, all of which are based around the idea of logistics and automation.
+Ancient Logistics is a mod for [Better than Adventure](https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/3106066-better-than-adventure-for-beta-1-7-3-timely) that adds a variety of new items and blocks to the game, all of which are based around the idea of logistics and automation.
 
 built using [bta-example-mod](https://github.com/Turnip-Labs/bta-example-mod/)
 
@@ -24,3 +24,14 @@ Chest Sorter: This powered block is capable of sorting attached chests. It can b
 ![Gearbox](.github/images/gearbox.png)
 ![Trommel Gearbox](.github/images/trommelgearbox.png)
 ![Chest Sorter](.github/images/chestsorter.png)
+
+### Installation
+
+Requires:
+- [Better than Adventure 1.7.6.2_02](https://github.com/Better-than-Adventure/bta-download-repo/releases/tag/v1.7.6.2_02)
+- [babric](https://babric.github.io/)
+- [bta-halplibe v1.1.4](https://github.com/Turnip-Labs/bta-halplibe/releases/tag/v1.1.4)
+
+Drop the jar file into the `mods` folder of your Better than Adventure installation.
+
+If there are other mods installed, there may be item ID conflicts. If this happens, you can change the item IDs in the `config/ancientlogistics.cfg` file.
