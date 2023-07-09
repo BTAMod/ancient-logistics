@@ -3,6 +3,8 @@ item.ancientlogistics.gear.desc=It's a gear.
 
 tile.ancientlogistics.gearbox.name=Gearbox
 tile.ancientlogistics.gearbox.desc=It's a gearbox.
+tile.ancientlogistics.reinforcedgearbox.name=Reinforced Gearbox
+tile.ancientlogistics.reinforcedgearbox.desc=It's a reinforced gearbox.
 tile.ancientlogistics.geartrommel.name=Trommel Gearbox
 tile.ancientlogistics.geartrommel.desc=It's a trommel gearbox.
 tile.ancientlogistics.gearchest.name=Chest Sorter

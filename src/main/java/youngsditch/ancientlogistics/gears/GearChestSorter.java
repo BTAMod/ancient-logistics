@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import net.minecraft.src.*;
+import youngsditch.ancientlogistics.AncientLogistics;
 import youngsditch.ancientlogistics.mixin.ChestAccessor;
 
 public class GearChestSorter extends GearUsable {
@@ -24,45 +25,57 @@ public class GearChestSorter extends GearUsable {
 	}
 
 	@Override
-	public int costToUse(World world, int x, int y, int z, EntityPlayer player) {
+	public int costToUse(World world, int x, int y, int z, EntityPlayer player, boolean canConnect) {
 		
 		// get block above
 		Block blockAbove = Block.blocksList[world.getBlockId(x, y + 1, z)];
 
 		if (blockAbove instanceof BlockChest) {
 			// first block must have a chest over it, the rest don't matter
+			if(!canConnect) {
+				return 2;
+			} else {
 
-			GearInfo<GearChestSorter>[] gearInfo = getConnected(world, x, y, z, GearChestSorter.class);
+				// get all connected gears
+				GearInfo<GearChestSorter>[] gearInfo = getConnected(world, x, y, z, GearChestSorter.class);
 
-			int chests = 0;
+				int chests = 0;
 
-			// check above each gear for a chest
-			for (int i = 0; i < gearInfo.length; i++) {
-				int[] coordinates = gearInfo[i].getCoordinates();
-				int[] chestCoordinates = {coordinates[0], coordinates[1] + 1, coordinates[2]};
-				if (Block.blocksList[world.getBlockId(chestCoordinates[0], chestCoordinates[1], chestCoordinates[2])] instanceof BlockChest) {
-					chests++;
+				// check above each gear for a chest
+				for (int i = 0; i < gearInfo.length; i++) {
+					int[] coordinates = gearInfo[i].getCoordinates();
+					int[] chestCoordinates = {coordinates[0], coordinates[1] + 1, coordinates[2]};
+					if (Block.blocksList[world.getBlockId(chestCoordinates[0], chestCoordinates[1], chestCoordinates[2])] instanceof BlockChest) {
+						chests++;
+					}
 				}
+
+				// return check count * 2
+				return chests * 2;
 			}
-
-			// return check count * 2
-			return chests * 2;
-
-		} else {
-			// return 0 if no chest above
-			return 0;
 		}
+
+		// return 0 if no chest above
+		return 0;
 	}
 
 	@Override
-	public int onGearUsed(World world, int x, int y, int z, EntityPlayer player) {
+	public int onGearUsed(World world, int x, int y, int z, EntityPlayer player, boolean canConnect) {
 		// get block above
 		Block blockAbove = Block.blocksList[world.getBlockId(x, y + 1, z)];
 
 		if (blockAbove instanceof BlockChest) {
 			// first block must have a chest over it, the rest don't matter
 
-			GearInfo<GearChestSorter>[] gearInfo = getConnected(world, x, y, z, GearChestSorter.class);
+			GearInfo<GearChestSorter>[] gearInfo;
+			
+			if(canConnect) {
+				gearInfo = getConnected(world, x, y, z, GearChestSorter.class);
+			} else {
+				gearInfo = getSolo(world, x, y, z, GearChestSorter.class);
+			}
+
+			AncientLogistics.LOGGER.info("Found " + gearInfo.length + " connected gears");
 
 			ChestWithDistance[] chests = new ChestWithDistance[gearInfo.length];
 

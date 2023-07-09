@@ -18,11 +18,13 @@ public class AncientLogistics implements ModInitializer {
         put("gearboxID", "900");
         put("geartrommelID", "901");
         put("gearchestID", "902");
+        put("reinforcedgearboxID", "903");
         // More keys and values...
     }});
 
     public static final Item gear = ItemHelper.createItem(MOD_ID, new Item(config.getInt("gearID")), "gear", "gear.png");
     public static final Block gearBlock = BlockHelper.createBlock(MOD_ID, new GearBox(config.getInt("gearboxID")), "gearbox", "gear_top.png", "gear_block.png", Block.soundMetalFootstep, 0.1f, 0.1f, 0.0f);
+    public static final Block reinforcedGearBlock = BlockHelper.createBlock(MOD_ID, new ReinforcedGearBox(config.getInt("reinforcedgearboxID")), "reinforcedgearbox", "gear_top.png", "reinf_gear_block.png", Block.soundMetalFootstep, 0.1f, 0.1f, 0.0f);
     public static final Block gearTrommelBlock = BlockHelper.createBlock(MOD_ID, new GearTrommel(config.getInt("geartrommelID")), "geartrommel", "gear_top.png", "gear_trommel.png", Block.soundMetalFootstep, 0.1f, 0.1f, 0.0f);
     public static final Block gearChestBlock = BlockHelper.createBlock(MOD_ID, new GearChestSorter(config.getInt("gearchestID")), "gearchest", "gear_top.png", "gear_chest.png", Block.soundWoodFootstep, 0.1f, 0.1f, 0.0f);
     
@@ -35,6 +37,16 @@ public class AncientLogistics implements ModInitializer {
             "CGC",
             'G', gear,
             'C', Item.clay,
+            'I', Item.ingotIron
+        });
+
+        // crafting recipe for reinforced gearbox
+        RecipeHelper.Crafting.createRecipe(reinforcedGearBlock, 1, new Object[]{
+            "CGC",
+            "GIG",
+            "CGC",
+            'G', gearBlock,
+            'C', Item.nethercoal,
             'I', Item.ingotIron
         });
 

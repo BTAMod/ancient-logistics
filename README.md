@@ -10,9 +10,14 @@ built using [bta-example-mod](https://github.com/Turnip-Labs/bta-example-mod/)
 
 Gear Item: This item is used for crafting other items.
 
-Gearboxes: These blocks are activated with bones and activate adjacent blocks. They occasionally break a bone in your hand - based on the number of adjacent blocks. Each Gearbox can only touch one gear block directly at a time, but some gear blocks can be chained.
+Gearboxes: These blocks are activated with bones and activate adjacent blocks. They occasionally break a bone in your hand - based on the number of adjacent blocks.
 
 ![Gearbox in use](.github/images/gearbox_in_use.png)
+
+Each Gearbox can only touch one gear block directly at a time and power one adjacent block. If you want to power multiple blocks, you can use a Reinforced Gearbox, which can power many blocks at once (at the cost of additional bones).
+
+![Gearbox powers 1 machine](.github/images/regular_gearbox_vs.png)
+![Reinforced Gearbox powers multiple machines](.github/images/reinforced_gearbox_vs.png)
 
 Gear Trommel: This block sits underneath a trommel, and if there are items to seive, this block will activate the trommel without the need for coal.
 
@@ -22,6 +27,7 @@ Chest Sorter: This powered block is capable of sorting attached chests. It can b
 
 ![Gear](.github/images/gear.png)
 ![Gearbox](.github/images/gearbox.png)
+![Reinforced Gearbox](.github/images/reinforced_gearbox.png)
 ![Trommel Gearbox](.github/images/trommelgearbox.png)
 ![Chest Sorter](.github/images/chestsorter.png)
 

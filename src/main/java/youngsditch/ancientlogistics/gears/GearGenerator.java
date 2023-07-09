@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class GearGenerator extends GearBlock {
   private Random rand = new Random();
+  protected boolean canRunMultiple = false;
 
   public GearGenerator(int id) {
     super(id);
@@ -113,7 +114,11 @@ public class GearGenerator extends GearBlock {
       int[] coords = gearUsable.getCoordinates();
 
       // check if the user has enough bones, roughly
-      int bonesNeeded = gearUsable.getGear().costToUse(world, coords[0], coords[1], coords[2], player);
+      int bonesNeeded = gearUsable.getGear().costToUse(world, coords[0], coords[1], coords[2], player, this.canRunMultiple);
+
+      if(!player.getGamemode().consumeBlocks) {
+        bonesNeeded = 1; // still needs one in hand
+      }
 
       // bones ends up being somewhat random, but we're gonna say 1/10 of the value is the cost
       // if theres even a val of 1, which might be free, the cost ceil goes up to 1
@@ -124,7 +129,7 @@ public class GearGenerator extends GearBlock {
       }
 
       // spawn particles
-      int value = gearUsable.getGear().onGearUsed(world, coords[0], coords[1], coords[2], player);
+      int value = gearUsable.getGear().onGearUsed(world, coords[0], coords[1], coords[2], player, this.canRunMultiple);
 
       showWorking(world, x, y, z, player);
       // 1 in 10 chance of breaking a bone for every value
@@ -132,7 +137,9 @@ public class GearGenerator extends GearBlock {
         if (this.rand.nextInt(10) == 0) {
           // log break
           player.worldObj.playSoundAtEntity(player, "mob.skeletonhurt", 0.5f, 1.0f);
-          player.getCurrentEquippedItem().consumeItem(player);
+          if(playerHasBone(player) && player.getCurrentEquippedItem().stackSize > 0) {
+            player.getCurrentEquippedItem().consumeItem(player);
+          }
         }
       }
     } else {

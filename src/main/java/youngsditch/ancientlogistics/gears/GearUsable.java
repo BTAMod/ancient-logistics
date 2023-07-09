@@ -9,12 +9,20 @@ public class GearUsable extends GearBlock {
     super(id);
   }
   
-  public int onGearUsed(World world, int x, int y, int z, EntityPlayer player) {
+  public int onGearUsed(World world, int x, int y, int z, EntityPlayer player, boolean canConnect) {
     return 0;
   }
 
-	public int costToUse(World world, int x, int y, int z, EntityPlayer player) {
+	public int costToUse(World world, int x, int y, int z, EntityPlayer player, boolean canConnect) {
     return 0;
+  }
+
+  @SuppressWarnings("unchecked")
+  public <T extends GearBlock> GearInfo<T>[] getSolo(World world, int x, int y, int z, Class<T> blockType) {
+    ArrayList<GearInfo<T>> connected = new ArrayList<>();
+    connected.add(new GearInfo<T>(new int[]{x, y, z}, 0, blockType.cast(this)));
+
+    return connected.toArray(new GearInfo[connected.size()]);
   }
 
   @SuppressWarnings("unchecked")
