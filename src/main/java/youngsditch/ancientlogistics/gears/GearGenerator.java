@@ -95,6 +95,11 @@ public class GearGenerator extends GearBlock {
 
   @Override
   public boolean blockActivated(World world, int x, int y, int z, EntityPlayer player) {
+
+    if(world.isMultiplayerAndNotHost) {
+      return true;
+    }
+
     // do nothing if covered
     if(!interactable(world, x, y, z, player)) {
       return false;
@@ -106,7 +111,6 @@ public class GearGenerator extends GearBlock {
       showNotWorking(world, x, y, z, player);
       return false;
     }
-
 
     GearInfo<GearUsable> gearUsable = nextToGearUsable(world, x, y, z);
     if (gearUsable != null) {
