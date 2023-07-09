@@ -169,9 +169,9 @@ public class GearChestSorter extends GearUsable {
 					index++;
 				}
 				chestAccessors[i].setChestContents(newChestContents);
-				
-				return chestAccessors.length * 2;
 			}
+			
+			return chestAccessors.length * 2;
 		}
 
 		return 0;
