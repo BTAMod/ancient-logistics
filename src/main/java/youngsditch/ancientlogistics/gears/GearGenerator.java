@@ -125,8 +125,6 @@ public class GearGenerator extends GearBlock {
 
       // spawn particles
       int value = gearUsable.getGear().onGearUsed(world, coords[0], coords[1], coords[2], player);
-      // log value
-      System.out.println("Value: " + value);
 
       showWorking(world, x, y, z, player);
       // 1 in 10 chance of breaking a bone for every value
