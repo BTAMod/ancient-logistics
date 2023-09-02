@@ -1,6 +1,9 @@
 package youngsditch.ancientlogistics.gears;
 
-import net.minecraft.src.*;
+import net.minecraft.core.entity.player.EntityPlayer;
+import net.minecraft.core.world.World;
+import net.minecraft.core.block.Block;
+import net.minecraft.core.item.Item;
 
 import java.util.Random;
 
@@ -8,8 +11,8 @@ public class GearGenerator extends GearBlock {
   private Random rand = new Random();
   protected boolean canRunMultiple = false;
 
-  public GearGenerator(int id) {
-    super(id);
+  public GearGenerator(String key, int id) {
+    super(key, id);
     this.rand = new Random();
   }
 
@@ -18,7 +21,7 @@ public class GearGenerator extends GearBlock {
   }
 
   public boolean playerHasBone(EntityPlayer player) {
-    return player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().itemID == Item.bone.itemID;
+    return player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().itemID == Item.bone.id;
   }
 
   public boolean interactable(World world, int x, int y, int z, EntityPlayer player) {
@@ -77,7 +80,7 @@ public class GearGenerator extends GearBlock {
         (this.rand.nextFloat() - 0.5) / 100,
         (this.rand.nextFloat() - 0.5) / 100);
     }
-    player.worldObj.playSoundAtEntity(player, "mob.skeletonhurt", 0.25f, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f)/2.0f);
+    player.world.playSoundAtEntity(player, "mob.skeletonhurt", 0.25f, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f)/2.0f);
   }
 
   public void showNotWorking(World world, int x, int y, int z, EntityPlayer player) {
@@ -96,7 +99,7 @@ public class GearGenerator extends GearBlock {
   @Override
   public boolean blockActivated(World world, int x, int y, int z, EntityPlayer player) {
 
-    if(world.isMultiplayerAndNotHost) {
+    if(world.isClientSide) {
       return true;
     }
 
@@ -140,7 +143,7 @@ public class GearGenerator extends GearBlock {
       for (int i = 0; i < value; i++) {
         if (this.rand.nextInt(10) == 0) {
           // log break
-          player.worldObj.playSoundAtEntity(player, "mob.skeletonhurt", 0.5f, 1.0f);
+          player.world.playSoundAtEntity(player, "mob.skeletonhurt", 0.5f, 1.0f);
           if(playerHasBone(player) && player.getCurrentEquippedItem().stackSize > 0) {
             player.getCurrentEquippedItem().consumeItem(player);
           }

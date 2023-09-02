@@ -4,14 +4,19 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import net.minecraft.src.*;
+import net.minecraft.core.block.Block;
+import net.minecraft.core.block.BlockChest;
+import net.minecraft.core.block.entity.*;
+import net.minecraft.core.entity.player.*;
+import net.minecraft.core.world.World;
+import net.minecraft.core.item.ItemStack;
 import youngsditch.ancientlogistics.AncientLogistics;
 import youngsditch.ancientlogistics.mixin.ChestAccessor;
 
 public class GearChestSorter extends GearUsable {
 
-	public GearChestSorter(int id) {
-		super(id);
+	public GearChestSorter(String key, int id) {
+		super(key, id);
 	}
 
 	class ChestWithDistance {

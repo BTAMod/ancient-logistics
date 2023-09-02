@@ -1,12 +1,16 @@
 package youngsditch.ancientlogistics.gears;
 
 import youngsditch.ancientlogistics.mixin.TrommelAccessor;
-import net.minecraft.src.*;
+import net.minecraft.core.block.Block;
+import net.minecraft.core.block.entity.TileEntityTrommel;
+import net.minecraft.core.world.World;
+import net.minecraft.core.entity.player.EntityPlayer;
+import net.minecraft.core.block.BlockTrommel;
 
 public class GearTrommel extends GearUsable {
 
-	public GearTrommel(int id) {
-		super(id);
+	public GearTrommel(String key, int id) {
+		super(key, id);
 	}
 
 	// returns true if a sieve is found

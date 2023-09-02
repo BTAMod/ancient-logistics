@@ -1,6 +1,7 @@
 package youngsditch.ancientlogistics.mixin;
 
-import net.minecraft.src.*;
+import net.minecraft.core.block.entity.TileEntityTrommel;
+import net.minecraft.core.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;

@@ -1,6 +1,6 @@
 package youngsditch.ancientlogistics.items;
 
-import net.minecraft.src.*;
+import net.minecraft.core.item.Item;
 
 public class GearBone extends Item {
   
