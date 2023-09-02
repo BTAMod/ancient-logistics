@@ -2,6 +2,8 @@
 
 Ancient Logistics is a mod for [Better than Adventure](https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-mods/3106066-better-than-adventure-for-beta-1-7-3-timely) that adds a variety of new items and blocks to the game, all of which are based around the idea of logistics and automation.
 
+Version: 1.7.7.0_02
+
 built using [bta-example-mod](https://github.com/Turnip-Labs/bta-example-mod/)
 
 ### Features
@@ -34,7 +36,7 @@ Chest Sorter: This powered block is capable of sorting attached chests. It can b
 ### Installation
 
 Requires:
-- [Better than Adventure 1.7.6.2_02](https://github.com/Better-than-Adventure/bta-download-repo/releases/tag/v1.7.6.2_02)
+- [Better than Adventure 1.7.7.0_02](https://github.com/Better-than-Adventure/bta-download-repo/releases/tag/v1.7.7.0_02)
 - [babric](https://babric.github.io/)
 - [bta-halplibe v1.1.4](https://github.com/Turnip-Labs/bta-halplibe/releases/tag/v1.1.4)
 
