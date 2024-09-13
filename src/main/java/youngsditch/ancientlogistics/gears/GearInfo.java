@@ -19,7 +19,7 @@ public class GearInfo<T extends GearBlock> {
   public int[] getCoordinates() {
     return coordinates;
   }
-  
+
   public int getDistance() {
     return distance;
   }

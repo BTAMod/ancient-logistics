@@ -19,6 +19,12 @@
   "entrypoints": {
     "main": [
         "youngsditch.ancientlogistics.AncientLogistics"
+    ],
+    "recipesReady": [
+        "youngsditch.ancientlogistics.AncientLogistics"
+    ],
+    "beforeGameStart": [
+        "youngsditch.ancientlogistics.AncientLogistics"
     ]
   },
   "mixins": [

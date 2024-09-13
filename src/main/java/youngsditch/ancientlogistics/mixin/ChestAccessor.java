@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value = TileEntityChest.class, remap = false)
 public interface ChestAccessor {
   @Accessor("chestContents")
-  ItemStack[] getChestContents();
+  public ItemStack[] getChestContents();
 
   @Accessor("chestContents")
   public void setChestContents(ItemStack[] chestContents);

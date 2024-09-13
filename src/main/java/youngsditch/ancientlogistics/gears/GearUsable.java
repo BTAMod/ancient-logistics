@@ -10,7 +10,7 @@ public class GearUsable extends GearBlock {
   public GearUsable(String key, int id) {
     super(key, id);
   }
-  
+
   public int onGearUsed(World world, int x, int y, int z, EntityPlayer player, boolean canConnect) {
     return 0;
   }

@@ -1,6 +1,7 @@
 package youngsditch.ancientlogistics.gears;
 
 import net.minecraft.core.entity.player.EntityPlayer;
+import net.minecraft.core.util.helper.Side;
 import net.minecraft.core.world.World;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.item.Item;
@@ -31,10 +32,10 @@ public class GearGenerator extends GearBlock {
   public GearInfo<GearUsable> nextToGearUsable(World world, int x, int y, int z) {
     // array of coordinates
     int[][] coordinates = {{x + 1, y, z}, {x - 1, y, z}, {x, y, z + 1}, {x, y, z - 1}};
-    
+
     GearInfo<GearUsable> gearInfo = null;
     int count = 0;
-    
+
     // check if any of the blocks are a GearUsable
     for (int[] coord : coordinates) {
         Block block = Block.blocksList[world.getBlockId(coord[0], coord[1], coord[2])];
@@ -78,9 +79,11 @@ public class GearGenerator extends GearBlock {
         z + (this.rand.nextFloat() + 0.5)/2,
         (this.rand.nextFloat() - 0.5) / 100,
         (this.rand.nextFloat() - 0.5) / 100,
-        (this.rand.nextFloat() - 0.5) / 100);
+        (this.rand.nextFloat() - 0.5) / 100,
+        0
+        );
     }
-    player.world.playSoundAtEntity(player, "mob.skeletonhurt", 0.25f, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f)/2.0f);
+    player.world.playSoundAtEntity(null, player, "mob.skeletonhurt", 0.25f, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2f + 1.0f)/2.0f);
   }
 
   public void showNotWorking(World world, int x, int y, int z, EntityPlayer player) {
@@ -92,13 +95,13 @@ public class GearGenerator extends GearBlock {
         z + (this.rand.nextFloat() + 0.5)/2,
         (this.rand.nextFloat() - 0.5) / 100,
         (this.rand.nextFloat() - 0.5) / 100,
-        (this.rand.nextFloat() - 0.5) / 100);
+        (this.rand.nextFloat() - 0.5) / 100,
+        0);
     }
   }
 
   @Override
-  public boolean blockActivated(World world, int x, int y, int z, EntityPlayer player) {
-
+  public boolean onBlockRightClicked(World world, int x, int y, int z, EntityPlayer player, Side side, double xPlaced, double yPlaced) {
     if(world.isClientSide) {
       return true;
     }
@@ -123,7 +126,7 @@ public class GearGenerator extends GearBlock {
       // check if the user has enough bones, roughly
       int bonesNeeded = gearUsable.getGear().costToUse(world, coords[0], coords[1], coords[2], player, this.canRunMultiple);
 
-      if(!player.getGamemode().consumeBlocks) {
+      if(!player.getGamemode().consumeBlocks()) {
         bonesNeeded = 1; // still needs one in hand
       }
 
@@ -143,7 +146,7 @@ public class GearGenerator extends GearBlock {
       for (int i = 0; i < value; i++) {
         if (this.rand.nextInt(10) == 0) {
           // log break
-          player.world.playSoundAtEntity(player, "mob.skeletonhurt", 0.5f, 1.0f);
+          player.world.playSoundAtEntity(null, player, "mob.skeletonhurt", 0.5f, 1.0f);
           if(playerHasBone(player) && player.getCurrentEquippedItem().stackSize > 0) {
             player.getCurrentEquippedItem().consumeItem(player);
           }
@@ -153,7 +156,7 @@ public class GearGenerator extends GearBlock {
       showNotWorking(world, x, y, z, player);
       return false;
     }
-    
+
     return true;
   }
 }

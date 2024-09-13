@@ -9,10 +9,10 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(value = TileEntityTrommel.class, remap = false)
 public interface TrommelAccessor {
   @Accessor("itemStacks")
-  ItemStack[] getItemStacks();
+  public ItemStack[] getItemStacks();
 
   @Accessor("nextToSieve")
-  int getNextToSieve();
+  public int getNextToSieve();
 
   @Accessor("nextToSieve")
   public void setNextToSieve(int nextToSieve);

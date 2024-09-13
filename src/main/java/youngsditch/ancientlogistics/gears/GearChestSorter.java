@@ -31,7 +31,6 @@ public class GearChestSorter extends GearUsable {
 
 	@Override
 	public int costToUse(World world, int x, int y, int z, EntityPlayer player, boolean canConnect) {
-		
 		// get block above
 		Block blockAbove = Block.blocksList[world.getBlockId(x, y + 1, z)];
 
@@ -73,7 +72,7 @@ public class GearChestSorter extends GearUsable {
 			// first block must have a chest over it, the rest don't matter
 
 			GearInfo<GearChestSorter>[] gearInfo;
-			
+
 			if(canConnect) {
 				gearInfo = getConnected(world, x, y, z, GearChestSorter.class);
 			} else {
@@ -125,7 +124,7 @@ public class GearChestSorter extends GearUsable {
 				public int compare(ItemStack a, ItemStack b) {
 					int maxSizeCompare = Integer.compare(a.getMaxStackSize(), b.getMaxStackSize());
 					if (maxSizeCompare == 0) {
-						return a.getItemName().compareTo(b.getItemName());
+						return a.getItem().getTranslatedName(a).compareTo(b.getItem().getTranslatedName(b));
 					} else {
 						return maxSizeCompare;
 					}

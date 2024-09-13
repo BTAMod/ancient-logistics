@@ -28,13 +28,11 @@ public class GearTrommel extends GearUsable {
 
 	@Override
 	public int costToUse(World world, int x, int y, int z, EntityPlayer player, boolean canConnect) {
-		
 		// get block above
 		Block blockAbove = Block.blocksList[world.getBlockId(x, y + 1, z)];
 
 		// if block above is a trommel
-		if (blockAbove instanceof BlockTrommel){
-			
+		if (blockAbove instanceof BlockTrommel) {
 			if(!canConnect) {
 				TileEntityTrommel tileEntityTrommel = (TileEntityTrommel)world.getBlockTileEntity(x, y + 1, z);
 
@@ -60,13 +58,12 @@ public class GearTrommel extends GearUsable {
 				return trommels * 2;
 			}
 		}
-		
 		return 0;
 	}
 
 	private boolean powerTrommel(World world, int x, int y, int z) {
 		TileEntityTrommel tileEntityTrommel = (TileEntityTrommel)world.getBlockTileEntity(x, y, z);
-		
+
 		// store burning state before adding burn time
 		boolean isBurning = tileEntityTrommel.isBurning();
 
@@ -91,10 +88,9 @@ public class GearTrommel extends GearUsable {
 
 		// if block above is a trommel
 		if (blockAbove instanceof BlockTrommel) {
-			
 			// get all connected gears
 			GearInfo<GearTrommel>[] gearInfo;
-			
+
 			if(canConnect) {
 				gearInfo = getConnected(world, x, y, z, GearTrommel.class);
 			} else {
