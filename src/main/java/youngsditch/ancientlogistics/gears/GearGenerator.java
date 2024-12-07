@@ -127,7 +127,7 @@ public class GearGenerator extends GearBlock {
       int bonesNeeded = gearUsable.getGear().costToUse(world, coords[0], coords[1], coords[2], player, this.canRunMultiple);
 
       if(!player.getGamemode().consumeBlocks()) {
-        bonesNeeded = 1; // still needs one in hand
+            bonesNeeded = 0;
       }
 
       // bones ends up being somewhat random, but we're gonna say 1/10 of the value is the cost
