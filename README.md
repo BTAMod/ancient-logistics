@@ -1,6 +1,8 @@
-# Ancient Logistics
+# Ancient Logistics: Community Edition
 
 Ancient Logistics is a mod for [Better than Adventure](https://betterthanadventure.net/) that adds a variety of new items and blocks to the game, all of which are based around the idea of logistics and automation.
+
+This is a fork of Roger Huntley II's [Ancient Logistics](https://github.com/rogerahuntley/ancient-logistics) mod, as it seemed to be abandoned.
 
 ### Installation
 
@@ -11,6 +13,8 @@ Requires:
 Drop the jar file into the `mods` folder of your Better than Adventure installation.
 
 If there are other mods installed, there may be item or block ID conflicts. If this happens, you can change the IDs in the `config/ancientlogistics.cfg` file.
+
+For modpack devs: there is an option called `gearBoxFuelId` which defaults to the ID of a bone, you can change this to whatever you want to chance the fuel that gearboxes consume.
 
 ### Features
 
@@ -46,4 +50,4 @@ This block sits underneath a trommel, and if there are items to seive, this bloc
 
 This powered block is capable of sorting all chests directly above it. They can be placed next to each other, and will sort all chests in the network. It is crafted using 4 gearboxes, 4 clay, and one chest. Chests are sorted based on distance to the gearbox.
 
-It has been tested and does work with a variety of modded chests, including iron chests.
+This works with double chests and a variety of modded chests, notably including all chests from the iron chests mod.
