@@ -47,21 +47,25 @@ public class AncientLogistics implements ModInitializer, GameStartEntrypoint, Re
 
         gearBlock = new BlockBuilder(MOD_ID)
             .setTextures("ancientlogistics:block/gear_block")
+            //.setTopTexture("ancientlogistics:block/gear_top")
             .setBlockSound(BlockSounds.METAL)
             .build(new GearBox("gearbox", config.getInt("gearboxID")));
 
         reinforcedGearBlock = new BlockBuilder(MOD_ID)
             .setTextures("ancientlogistics:block/reinf_gear_block")
+            //.setTopTexture("ancientlogistics:block/gear_top")
             .setBlockSound(BlockSounds.WOOD)
             .build(new ReinforcedGearBox("reinforcedgearbox", config.getInt("reinforcedgearboxID")));
 
         gearTrommelBlock = new BlockBuilder(MOD_ID)
             .setTextures("ancientlogistics:block/gear_trommel")
+            //.setTopTexture("ancientlogistics:block/gear_top")
             .setBlockSound(BlockSounds.METAL)
             .build(new GearTrommel("geartrommel", config.getInt("geartrommelID")));
 
         gearChestBlock = new BlockBuilder(MOD_ID)
             .setTextures("ancientlogistics:block/gear_chest")
+            //.setTopTexture("ancientlogistics:block/gear_top")
             .setBlockSound(BlockSounds.WOOD)
             .build(new GearChestSorter("gearchest", config.getInt("gearchestID")));
 
