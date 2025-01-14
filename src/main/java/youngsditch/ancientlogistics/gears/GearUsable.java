@@ -40,10 +40,12 @@ public class GearUsable extends GearBlock {
       // first check self
       int[] checkPos = toCheck.remove(0);
       Block block = Block.blocksList[world.getBlockId(checkPos[0], checkPos[1], checkPos[2])];
-      if (blockType.isInstance(block) && !isChecked(checked, checkPos[0], checkPos[1], checkPos[2])) {
+      if (!isChecked(checked, checkPos[0], checkPos[1], checkPos[2])) {
         checked.add(checkPos);
-        distance++;
-        connected.add(new GearInfo<T>(checkPos, distance, blockType.cast(block)));
+        if (blockType.isInstance(block)) {
+          distance++;
+          connected.add(new GearInfo<T>(checkPos, distance, blockType.cast(block)));
+        }
       }
 
       // then check neighbors

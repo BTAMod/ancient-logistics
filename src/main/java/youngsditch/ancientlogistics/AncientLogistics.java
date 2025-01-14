@@ -28,6 +28,7 @@ public class AncientLogistics implements ModInitializer, GameStartEntrypoint, Re
         put("geartrommelID", "906");
         put("gearchestID", "907");
         put("reinforcedgearboxID", "908");
+        put("gearBoxFuelId", "16480");
         // More keys and values...
     }});
 
@@ -36,6 +37,7 @@ public class AncientLogistics implements ModInitializer, GameStartEntrypoint, Re
     public static Block reinforcedGearBlock;
     public static Block gearTrommelBlock;
     public static Block gearChestBlock;
+    public static int gearBoxFuelId = config.getInt("gearBoxFuelId");
 
     @Override
     public void beforeGameStart() {

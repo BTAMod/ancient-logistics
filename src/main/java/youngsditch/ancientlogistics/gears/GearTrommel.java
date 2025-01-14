@@ -34,7 +34,7 @@ public class GearTrommel extends GearUsable {
 		// if block above is a trommel
 		if (blockAbove instanceof BlockTrommel) {
 			if(!canConnect) {
-				TileEntityTrommel tileEntityTrommel = (TileEntityTrommel)world.getBlockTileEntity(x, y + 1, z);
+				TileEntityTrommel tileEntityTrommel = (TileEntityTrommel) world.getBlockTileEntity(x, y + 1, z);
 
 				// if trommel is not burning and there is something to burn
 				if(findNextToSieve(tileEntityTrommel) && tileEntityTrommel.burnTime < 50) {

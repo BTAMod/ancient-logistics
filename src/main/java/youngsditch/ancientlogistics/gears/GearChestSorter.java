@@ -15,19 +15,18 @@ import net.minecraft.core.player.inventory.IInventory;
 import youngsditch.ancientlogistics.AncientLogistics;
 
 public class GearChestSorter extends GearUsable {
-
 	public GearChestSorter(String key, int id) {
 		super(key, id);
 	}
 
 	class ChestWithDistance {
-			public final TileEntityChest chest;
-			public final float distance;
+		public final TileEntityChest chest;
+		public final float distance;
 
-			ChestWithDistance(TileEntityChest chest, float distance) {
-					this.chest = chest;
-					this.distance = distance;
-			}
+		ChestWithDistance(TileEntityChest chest, float distance) {
+			this.chest = chest;
+			this.distance = distance;
+		}
 	}
 
 	@Override
@@ -35,7 +34,6 @@ public class GearChestSorter extends GearUsable {
 		if(!canConnect) {
 			return 2;
 		} else {
-
 			// get all connected gears
 			GearInfo<GearChestSorter>[] gearInfo = getConnected(world, x, y, z, GearChestSorter.class);
 
@@ -86,7 +84,7 @@ public class GearChestSorter extends GearUsable {
 			int[] coordinates = gearInfo[i].getCoordinates();
 			int[] chestCoordinates = {coordinates[0], coordinates[1] + 1, coordinates[2]};
 			BlockChest.Type type = BlockChest.getTypeFromMeta(world.getBlockMetadata(chestCoordinates[0], chestCoordinates[1], chestCoordinates[2]));
-			if (type != BlockChest.Type.LEFT || checkOffsetChest(world, chestCoordinates[0], chestCoordinates[1], chestCoordinates[2])) {
+			if (type != BlockChest.Type.LEFT || !checkOffsetChest(world, chestCoordinates[0], chestCoordinates[1], chestCoordinates[2])) {
 				TileEntity tileEntity = world.getBlockTileEntity(chestCoordinates[0], chestCoordinates[1], chestCoordinates[2]);
     			if (tileEntity instanceof TileEntityChest) {
     			    chests[i] = new ChestWithDistance((TileEntityChest)tileEntity, gearInfo[i].getDistance());
@@ -135,14 +133,12 @@ public class GearChestSorter extends GearUsable {
 		});
 
 		// merge like itemstacks
-		// itemstacks have getMaxStackSize() and getItem
-		// if itemstack.getItem() == item.getItem(), consider merging,
 		int index = 0;
 		// until we've checked them all
 		while(index < allItems.size()) {
 			ItemStack currentItem = allItems.get(index);
 			// if the next item is the same item and the current item is not full, keep going
-			while(index + 1 < allItems.size() && currentItem.getItem() == allItems.get(index + 1).getItem() && currentItem.stackSize < currentItem.getMaxStackSize()) {
+			while(index + 1 < allItems.size() && currentItem.canStackWith(allItems.get(index + 1)) && currentItem.stackSize < currentItem.getMaxStackSize()) {
 				ItemStack nextItem = allItems.get(index + 1);
 				// if the next item can fit in the current item, merge it
 				if (currentItem.stackSize + nextItem.stackSize <= currentItem.getMaxStackSize()) {
